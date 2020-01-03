@@ -25,7 +25,7 @@ server.post("/answer", (reqListener, reqResponse) => {
     //let score = 0
 
    
-    if(reqListener.body.ourInput.toUpperCase() == "BLUE"){
+    if(reqListener.body.ourInput.toUpperCase() == ""){
 
         reqResponse.send(`
             <p> Congratulations your answer was correct </p>
