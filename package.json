@@ -1,0 +1,26 @@
+{
+  "name": "NodeJS",
+  "version": "1.0.0",
+  "description": "All things Node",
+  "main": "ConnectingToMongoDb.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "watch": "nodemon ConnectingToMongoDb",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamfredrickokereke/NodeJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamfredrickokereke/NodeJS/issues"
+  },
+  "homepage": "https://github.com/iamfredrickokereke/NodeJS#readme"
+}
