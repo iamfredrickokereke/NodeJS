@@ -1,4 +1,16 @@
 let express = require('express')
+let mongoDB = require('mongodb')
+
+let db
+
+let connectionString = ''
+
+mongoDB.connect(connectionString,{useNewUrlParser: true}, (err, client) => {
+
+    db = client.db()
+    server.listen(3000)
+})
+
 
 let server = express()
 
@@ -64,10 +76,13 @@ server.get("/", (req, res) => {
 
 
 server.post("/db", (req, res) => {
-    console.log(req.body.input)
+    //console.log(req.body.input)
 
-    res.send(`
-        Hello it works now!
-    `)
+    db.collection('items').insertOne({text: req.body.input}, () => {
+
+        res.send(`Your form has been submitted to the database, kindly check.`)
+
+    })
+
+    
 })
-server.listen(3000)
