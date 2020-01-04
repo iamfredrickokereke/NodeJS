@@ -1,15 +1,16 @@
 let express = require('express')
-let mongoDB = require('mongodb')
+let mongodb = require('mongodb')
 
 let db
 
-let connectionString = ''
+let connectionString = 'mongodb+srv://todoAppUser:root@cluster0-9mcdn.mongodb.net/TodoApp?retryWrites=true&w=majority'
 
-mongoDB.connect(connectionString,{useNewUrlParser: true}, (err, client) => {
+mongodb.connect(connectionString,{useNewUrlParser: true,  useUnifiedTopology: true}, (err, client) => {
 
     db = client.db()
     server.listen(3000)
 })
+
 
 
 let server = express()
@@ -78,11 +79,7 @@ server.get("/", (req, res) => {
 server.post("/db", (req, res) => {
     //console.log(req.body.input)
 
-    db.collection('items').insertOne({text: req.body.input}, () => {
-
-        res.send(`Your form has been submitted to the database, kindly check.`)
-
-    })
-
+   db.collection('items2').insertOne({name : req.body.input}, () => { res.send("it worked")})
     
 })
+
