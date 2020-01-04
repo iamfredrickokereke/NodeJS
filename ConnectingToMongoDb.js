@@ -19,7 +19,9 @@ let server = express()
 server.use(express.urlencoded({extended: false}))
 
 server.get("/", (req, res) => {
-    res.send(`
+
+    db.collection('items2').find().toArray((err, items)=>{ 
+        res.send(`
     
     <!DOCTYPE html>
     <html>
@@ -43,27 +45,16 @@ server.get("/", (req, res) => {
         </div>
         
         <ul class="list-group pb-5">
-          <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-            <span class="item-text">Fake example item #1</span>
-            <div>
-              <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
-              <button class="delete-me btn btn-danger btn-sm">Delete</button>
-            </div>
-          </li>
-          <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-            <span class="item-text">Fake example item #2</span>
-            <div>
-              <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
-              <button class="delete-me btn btn-danger btn-sm">Delete</button>
-            </div>
-          </li>
-          <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-            <span class="item-text">Fake example item #3</span>
-            <div>
-              <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
-              <button class="delete-me btn btn-danger btn-sm">Delete</button>
-            </div>
-          </li>
+          ${items.map(function (item) {
+           return  `<li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+           <span class="item-text">${item.name}</span>
+           <div>
+             <button class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
+             <button class="delete-me btn btn-danger btn-sm">Delete</button>
+           </div>
+         </li>
+         `
+          }).join("")}
         </ul>
         
       </div>
@@ -72,6 +63,8 @@ server.get("/", (req, res) => {
     </html>
     
     `)
+    })
+    
 })
 
 
@@ -79,7 +72,11 @@ server.get("/", (req, res) => {
 server.post("/db", (req, res) => {
     //console.log(req.body.input)
 
-   db.collection('items2').insertOne({name : req.body.input}, () => { res.send("it worked")})
+   db.collection('items2').insertOne({name : req.body.input}, () => { res.redirect("/")
+    
+    //res.send("it worked")
+
+})
     
 })
 
