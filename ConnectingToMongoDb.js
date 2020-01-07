@@ -20,7 +20,7 @@ server.use(express.urlencoded({extended: false}))
 
 server.get("/", (req, res) => {
 
-    db.collection('items2').find().toArray((err, items)=>{ 
+    db.collection('items2').find().toArray((err, items4)=>{ 
         res.send(`
     
     <!DOCTYPE html>
@@ -45,7 +45,7 @@ server.get("/", (req, res) => {
         </div>
         
         <ul class="list-group pb-5">
-          ${items.map(function (item) {
+          ${items4.map(function (item) {
            return  `<li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
            <span class="item-text">${item.name}</span>
            <div>
