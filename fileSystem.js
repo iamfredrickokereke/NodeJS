@@ -1,14 +1,27 @@
-let http = require('http')
-let fs = require('fs')
+let http = require("http")
 
-let server = http.createServer(instructions).listen(5000)
+let fileSystem = require("fs")
 
-function instructions(req, res) {
-   // res.end('it works yet!')
+let url = require("url")
 
-    fs.readFile('index.html', function (err, data) {
+
+
+ http.createServer(function (req , res) {
+
+    let newUrl = url.parse(req.url, true)
+
+    let fileName = "." + newUrl.pathname
+
+    console.log(newUrl.pathname)
+    
+    fileSystem.readFile(fileName, callBack)
+
+    function callBack(error, data) {
         res.write(data)
         res.end()
-    })
-}
+    }
 
+   
+}).listen(5000)
+
+//console.log("Sending responses...")
