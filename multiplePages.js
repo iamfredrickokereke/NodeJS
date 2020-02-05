@@ -17,6 +17,10 @@ let url = require("url")
     fileSystem.readFile(fileName, callFunction)
 
     function callFunction(error, data) {
+
+        if (error) {
+            res.end("Page not found")
+        }
         res.write(data)
         res.end()
     }
