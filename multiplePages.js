@@ -13,6 +13,10 @@ let url = require("url")
     let fileName = "." + newUrl.pathname
 
     //console.log(newUrl.pathname)
+
+    if (fileName == './') {
+        fileName = './index.html'
+    }
     
     fileSystem.readFile(fileName, callFunction)
 
