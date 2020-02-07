@@ -27,6 +27,8 @@ const server = http.createServer( (request, response) => {
     
 })
 
+//json wont work on response object without express
+
 server.listen(3000, () => {
     console.log("Server is listening on port 3000")
 })
