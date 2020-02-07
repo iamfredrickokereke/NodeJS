@@ -9,6 +9,6 @@ server.get("./index.html", (request, response) => {
     response.sendFile("index.html", () =>{ alert("file not found")})
 })
 
-server.post(a,b)
+//server.post(a,b)
 
-server.listen(3500, () => {Console.log("Server is listening on port 3500")})
+server.listen(3500, () => {console.log("Server is listening on port 3500")})
