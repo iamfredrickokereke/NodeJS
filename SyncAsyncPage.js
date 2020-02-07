@@ -7,7 +7,7 @@ const server = http.createServer( (request, response) => {
     //console.log(request.url)
 
 
-    //Blocking and Non Blocking Code
+    //Blocking(Synchronous) Code and Non Blocking(Asynchronous) Code
 
     const secondPage = fs.readFileSync("./second.html")
     const thirdPage = fs.readFileSync("./third.html")
