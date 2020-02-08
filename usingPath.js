@@ -5,6 +5,8 @@ const url = require('url')
 
 const server = express()
 
+server.use(express.static('public'))
+
 server.get("/index", (request, response) => {
    
 
